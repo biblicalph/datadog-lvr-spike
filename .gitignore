@@ -1,0 +1,29 @@
+# test artifacts
+tmp/
+output/
+
+# IDE files
+.idea
+*.swp
+*.vim
+
+# dev files
+*.save
+*.tgz
+.npm
+.pnpm/
+.eslintcache/
+.node_repl_history
+node_modules/
+npm-debug.log
+.vscode
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+.DS_Store
+ci-buildtools/
+.env

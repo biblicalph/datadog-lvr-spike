@@ -1,0 +1,70 @@
+services:
+  node:
+    container_name: node
+    build: 
+      context: ./app 
+      args:
+        - GITHUB_TOKEN
+    command: node index.js
+    ports:
+     - "8800:5000"
+    volumes:
+     - ./app:/app # modified here to take into account the new app path
+    depends_on:
+    - redis
+    networks:
+    - app-network
+    environment:
+     - DATADOG_AGENT_HOST=dd-agent # points to dd-agent to send traces
+     - DATADOG_AGENT_PORT=8125
+     - WEB_APP_URL=http://web:9000
+     - REDIS_HOST=redis
+     - REDIS_PORT=6379
+     # specify service and source
+     - DD_SERVICE=node-api
+    #  - DD_SOURCE=nodejs
+    # labels:
+    #   com.datadoghq.ad.logs: '[{"source": "nodejs", "service": "node-app"}]'
+
+  redis:
+    container_name: redis
+    image: redis
+    networks:
+    - app-network
+    
+  # agent section
+  datadog:
+    container_name: dd-agent
+    build: datadog
+    pid: host
+    depends_on:
+    - redis
+    - node
+    networks:
+    - app-network
+    environment:
+    # See: https://docs.datadoghq.com/containers/docker/?tab=standard
+     - DD_API_KEY=${DD_API_KEY}
+     - DD_LOGS_ENABLED=true
+     - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true 
+     - DD_CONTAINER_EXCLUDE=name:dd-agent
+     - DD_DD_URL=${DD_DD_URL} # set base URL for all data streams (logs, metrics, traces)
+     - DD_LOGS_CONFIG_LOGS_DD_URL=${DD_LOGS_CONFIG_LOGS_DD_URL}
+     - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
+     - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true # enables agent to receive custom metrics from other containers
+     - DD_APM_ENABLED=true # enables tracing
+     - DD_APM_NON_LOCAL_TRAFFIC=true # enables agent to receive traces from other containers
+     - DATADOG_AGENT_HOST=dd-agent # allows web container to forward traces to agent
+     - DATADOG_AGENT_PORT=8125
+    env_file:
+    - .env
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+     - /proc/:/host/proc/:ro
+     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+    #  - ~/mezmo_docker/datadog-agent/run:/opt/datadog-agent/run:rw
+
+networks:
+  app-network:
+    driver: bridge

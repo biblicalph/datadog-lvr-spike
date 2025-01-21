@@ -1,0 +1,44 @@
+{
+  "name": "datadog-lvr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "config-doc": "config-doc config.js > ENV.md",
+    "local": "env $(cat ./env/local.env)",
+    "lint": "eslint ./",
+    "lint:fix": "npm run lint -- --fix",
+    "start:dev": "npm run local node test.js"
+  },
+  "dependencies": {
+    "@answerbook/create-pino-config": "^4.0.0",
+    "@answerbook/redis": "^2.0.0",
+    "@logdna/env-config": "^2.0.1",
+    "casual": "^1.6.2",
+    "got": "^14.4.5",
+    "hot-shots": "^10.2.1",
+    "pino": "^6.13.3",
+    "pino-pretty": "^13.0.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-logdna": "^5.1.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "logdna"
+    ],
+    "ignorePatterns": [
+      "node_modules/",
+      "coverage/"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    }
+  },
+  "author": "",
+  "license": "ISC"
+}
