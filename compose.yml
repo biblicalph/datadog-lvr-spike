@@ -45,19 +45,19 @@ services:
     environment:
     # See: https://docs.datadoghq.com/containers/docker/?tab=standard
      - DD_API_KEY=${DD_API_KEY}
-     - DD_LOGS_ENABLED=true
+     - DD_LOGS_ENABLED=${DD_LOGS_ENABLED:-true}
      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true 
      - DD_CONTAINER_EXCLUDE=name:dd-agent
-     - DD_DD_URL=${DD_DD_URL} # set base URL for all data streams (logs, metrics, traces)
+     - DD_URL=${DD_URL} # set base URL for all data streams (logs, metrics, traces)
      - DD_LOGS_CONFIG_LOGS_DD_URL=${DD_LOGS_CONFIG_LOGS_DD_URL}
      - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
-     - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true # enables agent to receive custom metrics from other containers
-     - DD_APM_ENABLED=true # enables tracing
-     - DD_APM_NON_LOCAL_TRAFFIC=true # enables agent to receive traces from other containers
+     - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=${DD_APM_NON_LOCAL_TRAFFIC:-false} # enables agent to receive custom metrics from other containers
+     - DD_APM_ENABLED=${DD_APM_ENABLED:-true} # enables tracing
+     - DD_APM_NON_LOCAL_TRAFFIC=${DD_APM_NON_LOCAL_TRAFFIC:-false} # enables agent to receive traces from other containers
      - DATADOG_AGENT_HOST=dd-agent # allows web container to forward traces to agent
-     - DATADOG_AGENT_PORT=8125
+     - DATADOG_AGENT_PORT=${DD_APM_RECEIVER_PORT:-8126}
     env_file:
-    - .env
+    - env.compose
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock:ro
      - /proc/:/host/proc/:ro

@@ -26,4 +26,5 @@ pids
 
 .DS_Store
 ci-buildtools/
-.env
+.env*
+*.log

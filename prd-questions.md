@@ -25,7 +25,6 @@ See [log collection notes](https://docs.datadoghq.com/getting_started/tagging/#a
 3. Provide metrics optmizations
     1. The [APIs for metric usage](https://docs.datadoghq.com/api/latest/usage-metering/#get-hourly-usage-for-custom-metrics) have been deprecated and cannot be used
 
-
 ### Metric reduction questions
 
 1. Do we have a production like account we can test some of the APIs on. [Metrics by hourly usage endpoint](https://docs.datadoghq.com/api/latest/usage-metering/#get-all-custom-metrics-by-hourly-average) is a candidate worth further exploration.

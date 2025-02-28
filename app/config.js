@@ -40,7 +40,7 @@ module.exports = new Config([
 , Config
     .enum('log-destination')
     .values(['stderr', 'file'])
-    .default('stderr')
+    .default('file')
     .desc('The destination to write log files to')
 , Config
     .enum('log-library')

@@ -1,0 +1,156 @@
+{
+  "headers": {
+    "accept-encoding": "gzip",
+    "dd-api-key": "<api-key>",
+    "dd-agent-version": "7.63.0",
+    "content-length": "6282",
+    "content-type": "application/json",
+    "content-encoding": "zstd",
+    "host": "webhook.site",
+    "user-agent": "datadog-agent/7.63.0"
+  },
+  "body": {
+    "agent-flavor": "agent",
+    "agentVersion": "7.63.0",
+    "apiKey": "<api-key>",
+    "gohai": "{\"cpu\":{\"cpu_cores\":\"10\",\"cpu_logical_processors\":\"10\",\"family\":\"6\",\"mhz\":\"2400\",\"model_name\":\"Apple M1 Pro\"},\"filesystem\":[{\"kb_size\":\"512000\",\"mounted_on\":\"/System/Volumes/iSCPreboot\",\"name\":\"/dev/disk1s1\"},{\"kb_size\":\"482797652\",\"mounted_on\":\"/System/Volumes/Update/mnt1\",\"name\":\"/dev/disk3s1\"},{\"kb_size\":\"482797652\",\"mounted_on\":\"/\",\"name\":\"/dev/disk3s1s1\"},{\"kb_size\":\"482797652\",\"mounted_on\":\"/System/Volumes/Update\",\"name\":\"/dev/disk3s4\"},{\"kb_size\":\"512000\",\"mounted_on\":\"/System/Volumes/xarts\",\"name\":\"/dev/disk1s2\"},{\"kb_size\":\"512000\",\"mounted_on\":\"/System/Volumes/Hardware\",\"name\":\"/dev/disk1s3\"},{\"kb_size\":\"5242836\",\"mounted_on\":\"/System/Volumes/Update/SFR/mnt1\",\"name\":\"/dev/disk2s1\"},{\"kb_size\":\"482797652\",\"mounted_on\":\"/System/Volumes/VM\",\"name\":\"/dev/disk3s6\"},{\"kb_size\":\"482797652\",\"mounted_on\":\"/System/Volumes/Preboot\",\"name\":\"/dev/disk3s2\"}],\"memory\":{\"swap_total\":\"14680064kB\",\"total\":\"17179869184\"},\"network\":{\"interfaces\":[{\"ipv4\":[],\"ipv6\":[],\"name\":\"anpi2\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"anpi0\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"anpi1\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"en4\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"en5\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"en6\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"en1\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"en2\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"en3\"},{\"ipv4\":[],\"ipv6\":[],\"name\":\"bridge0\"},{\"ipv4\":[],\"ipv6\":[\"fe80::f4d4:88ff:fe7c:eb2a\"],\"ipv6-network\":\"fe80::/64\",\"macaddress\":\"<mac-address>\",\"name\":\"ap1\"},{\"ipv4\":[\"192.168.2.75\"],\"ipv4-network\":\"192.168.2.0/24\",\"ipv6\":[\"fe80::1c48:2990:5d50:d822\"],\"ipv6-network\":\"fe80::/64\",\"macaddress\":\"<mac-address>\",\"name\":\"en0\"},{\"ipv4\":[],\"ipv6\":[\"fe80::a01c:73ff:fe6f:d731\"],\"ipv6-network\":\"fe80::/64\",\"macaddress\":\"<mac-address>\",\"name\":\"awdl0\"},{\"ipv4\":[],\"ipv6\":[\"fe80::a01c:73ff:fe6f:d731\"],\"ipv6-network\":\"fe80::/64\",\"macaddress\":\"<mac-address>\",\"name\":\"llw0\"},{\"ipv4\":[],\"ipv6\":[\"fe80::8aaa:99e8:8ffa:362d\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun0\"},{\"ipv4\":[],\"ipv6\":[\"fe80::34ab:5ba8:66ab:23ac\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun1\"},{\"ipv4\":[],\"ipv6\":[\"fe80::2f34:8432:2377:f564\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun2\"},{\"ipv4\":[],\"ipv6\":[\"fe80::ce81:b1c:bd2c:69e\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun3\"},{\"ipv4\":[],\"ipv6\":[\"fe80::9d38:430a:4d0d:5e24\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun4\"},{\"ipv4\":[],\"ipv6\":[\"fe80::1b01:5e88:b8c6:752e\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun5\"},{\"ipv4\":[],\"ipv6\":[\"fe80::bfcd:407b:8741:bd27\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun6\"},{\"ipv4\":[],\"ipv6\":[\"fe80::fede:97d8:da4:b7a8\"],\"ipv6-network\":\"fe80::/64\",\"name\":\"utun7\"}],\"ipaddress\":\"192.168.2.75\",\"ipaddressv6\":\"fe80::f4d4:88ff:fe7c:eb2a\",\"macaddress\":\"<mac-address>\"},\"platform\":{\"GOOARCH\":\"amd64\",\"GOOS\":\"darwin\",\"goV\":\"1.23.5\",\"hostname\":\"hostname.local\",\"kernel_name\":\"Darwin\",\"kernel_release\":\"23.6.0\",\"kernel_version\":\"Darwin Kernel Version 23.6.0: Mon Jul 29 21:14:30 PDT 2024; root:xnu-10063.141.2~1/RELEASE_ARM64_T6000\",\"machine\":\"arm64\",\"os\":\"Darwin\",\"processor\":\"arm\"}}",
+    "host-tags": {
+      "system": []
+    },
+    "install-method": {
+      "installer_version": "macos_dmg",
+      "tool": "macos_dmg",
+      "tool_version": "macos_dmg"
+    },
+    "internalHostname": "hostname.local",
+    "logs": {
+      "auto_multi_line_detection_enabled": false,
+      "transport": "HTTP"
+    },
+    "meta": {
+      "ec2-hostname": "",
+      "host_aliases": [],
+      "hostname": "hostname.local",
+      "hostname-resolution-version": 1,
+      "instance-id": "",
+      "socket-fqdn": "hostname.local",
+      "socket-hostname": "hostname.local",
+      "timezones": [
+        "EST"
+      ]
+    },
+    "mezmo_event_type": "intake",
+    "mezmo_req_path": "/v1/df724f6c-cd56-11ef-83db-c277425aded1/intake/",
+    "network": null,
+    "os": "darwin",
+    "otlp": {
+      "enabled": false
+    },
+    "proxy-info": {
+      "no-proxy-nonexact-match": false,
+      "no-proxy-nonexact-match-explicitly-set": false,
+      "proxy-behavior-changed": false
+    },
+    "python": "3.12.8 (main, Feb 18 2025, 18:11:50) [Clang 14.0.0 (clang-1400.0.29.202)]",
+    "resources": {
+      "meta": {
+        "host": "hostname.local"
+      },
+      "processes": {
+        "snaps": [
+          [
+            1740694847,
+            [
+              [
+                "<device_name>",
+                0,
+                1.6569137573242188,
+                455951368192,
+                284655616,
+                "Google Chrome",
+                1
+              ],
+              [
+                "<device_name>",
+                0,
+                0.9754180908203124,
+                3782063964160,
+                167575552,
+                "mdworker_shared",
+                9
+              ],
+              [
+                "<device_name>",
+                0,
+                0.548553466796875,
+                423056080896,
+                94240768,
+                "iTerm2",
+                1
+              ],
+              [
+                "<device_name>",
+                0,
+                0.4403114318847656,
+                1273548603392,
+                75644928,
+                "com.docker.backend",
+                3
+              ],
+              [
+                "<device_name>",
+                0,
+                0.4109382629394531,
+                427611504640,
+                70598656,
+                "tilt",
+                1
+              ],
+              [
+                "<device_name>",
+                0,
+                0.3546714782714844,
+                1661397565440,
+                60932096,
+                "Slack",
+                1
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    "systemStats": {
+      "cpuCores": 10,
+      "fbsdV": [
+        "",
+        "",
+        ""
+      ],
+      "macV": [
+        "14.6.1",
+        [
+          "",
+          "",
+          ""
+        ],
+        "amd64"
+      ],
+      "machine": "amd64",
+      "nixV": [
+        "",
+        "",
+        ""
+      ],
+      "platform": "darwin",
+      "processor": "Apple M1 Pro",
+      "pythonV": "3.12.8",
+      "winV": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "uuid": "57d9aa05-1079-5c71-837e-8b7b0a1c4756"
+  }
+}
