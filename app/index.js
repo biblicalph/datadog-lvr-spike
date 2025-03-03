@@ -5,6 +5,7 @@ const moduleId = require('./lib/module-id.js')
 const log = require('./lib/log.js').child({module: moduleId(__filename)})
 const redis = require('./lib/redis.js')
 const createLogEmitter = require('./lib/log-generator.js')
+const sendTraceToDatadog = require('./lib/tracer.js')
 
 config.validateEnvVars()
 
@@ -24,6 +25,9 @@ async function start() {
 
   interval_id = setInterval(() => {
     log_emitter.emit()
+    sendTraceToDatadog().catch(err => {
+      log.error(`trace error: ${err.message}`)
+    })
   }, 100)
 }
 

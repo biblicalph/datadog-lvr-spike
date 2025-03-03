@@ -34,9 +34,13 @@ module.exports = new Config([
     .default('datadog-agent')
     .desc('The datadog-agent host')
 , Config
-    .number('datadog-agent-port')
+    .number('datadog-agent-metrics-port')
     .default(8125)
-    .desc('The datadog agent port')
+    .desc('Port the agent listens on for metrics')
+, Config
+    .number('datadog-agent-apm-port')
+    .default(8126)
+    .desc('Port the agent listens on for APM')
 , Config
     .enum('log-destination')
     .values(['stderr', 'file'])

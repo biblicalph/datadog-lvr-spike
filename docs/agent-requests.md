@@ -179,8 +179,33 @@ A sample of the intake request, with the payload decompressed is avialable [here
 
 Intake requests, routed through pipeline, end up as logs. So far, it appears the agent continues to work even when these requests don't make it to Datadog.
 
+## Metadata requests
+
+The agent sends metadata requests to Datadog with details about the configuration information of the running agent. Per the `datadog.yaml` file, metadata collection, toggled via `enable_metadata_collection` param or via `DD_ENABLE_METADATA_COLLECTION` env, should always be enabled; disabling it on all agents leads to [display and billing issues](https://github.com/DataDog/datadog-agent/blob/9c7a6e427a80cb6793d8c0342901a4a401b84583/pkg/config/config_template.yaml#L742)
+
+### Metadata request details
+
+Endpoint: POST <DD_URL>/api/v1/metadata
+See [metadata](./requests/metadata.json) for a sample of the request headers and decompressed payload.
+
 ## Process requests
 
-Process monitoring, included in all [Enterprise plans](https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows), provides visibility into processes running in a client's infrastructure.
+Process monitoring, included in all [Enterprise plans](https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows), provides visibility into containers and processes running in a client's infrastructure.
 
-The process request calls are of the form `https://api.<DD_SITE>/api/v1`; example is the [discovery](https://api.us5.datadoghq.com/api/v1/discovery) request.
+### Process request details
+
+Endpoint: `POST <DD_SITE>/api/v1/collector`.
+
+The request payload is a protobuf of the [events](https://github.com/DataDog/agent-payload/blob/master/proto/process/events.proto) or [connections](https://github.com/DataDog/agent-payload/blob/master/proto/process/connections.proto).
+
+## Trace requests
+
+Traces, also known as appplication performance monitoring, APM, by Datadog are collected by the agent and sent to `api/v0.x/traces`.
+
+### Trace request details
+
+I've been unable to determine the trace payload sent by the agent.
+The agent repository has a protobuf definition of the [payload accepted by the agent](https://github.com/DataDog/datadog-agent/blob/main/pkg/proto/datadog/trace/tracer_payload.proto) for traces, similar to the proto used in the [vector repo](https://github.com/vectordotdev/vector/blob/3cf1eccc8dc5cf508a80fa47a251236862221f4c/proto/vector/dd_trace.proto).
+So far, I have been unable to decode the agent payload using this proto definition; tested against `api/v0.2/traces`.
+
+Note: additional requests are also made by the agent.

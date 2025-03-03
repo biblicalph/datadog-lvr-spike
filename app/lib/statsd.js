@@ -6,7 +6,7 @@ const config = require('../config.js')
 const log = require('./log.js').child({module: moduleId(__filename)})
 
 const AGENT_HOST = config.get('datadog-agent-host')
-const AGENT_PORT = config.get('datadog-agent-port')
+const AGENT_PORT = config.get('datadog-agent-metrics-port')
 
 function createStatsDClient() {
   return new StatsD({

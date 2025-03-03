@@ -16,6 +16,7 @@
     "@answerbook/redis": "^2.0.0",
     "@logdna/env-config": "^2.0.1",
     "casual": "^1.6.2",
+    "dd-trace": "^5.40.0",
     "got": "^14.4.5",
     "hot-shots": "^10.2.1",
     "pino": "^6.13.3",

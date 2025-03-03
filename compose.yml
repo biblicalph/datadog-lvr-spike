@@ -31,6 +31,8 @@ services:
     image: redis
     networks:
     - app-network
+    ports:
+    - 6379:6379
     
   # agent section
   datadog:
@@ -51,13 +53,16 @@ services:
      - DD_URL=${DD_URL} # set base URL for all data streams (logs, metrics, traces)
      - DD_LOGS_CONFIG_LOGS_DD_URL=${DD_LOGS_CONFIG_LOGS_DD_URL}
      - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
-     - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=${DD_APM_NON_LOCAL_TRAFFIC:-false} # enables agent to receive custom metrics from other containers
+     - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=${DD_APM_NON_LOCAL_TRAFFIC:-true} # enables agent to receive custom metrics from other containers
      - DD_APM_ENABLED=${DD_APM_ENABLED:-true} # enables tracing
-     - DD_APM_NON_LOCAL_TRAFFIC=${DD_APM_NON_LOCAL_TRAFFIC:-false} # enables agent to receive traces from other containers
+     - DD_APM_NON_LOCAL_TRAFFIC=${DD_APM_NON_LOCAL_TRAFFIC:-true} # enables agent to receive traces from other containers
      - DATADOG_AGENT_HOST=dd-agent # allows web container to forward traces to agent
      - DATADOG_AGENT_PORT=${DD_APM_RECEIVER_PORT:-8126}
+     - DD_APM_DD_URL=${DD_APM_DD_URL}
+     - DD_PROCESS_CONFIG_ENABLED=${DD_PROCESS_CONFIG_PROCESS_COLLECTION_ENABLED:-false}
+     - DD_PROCESS_CONFIG_PROCESS_DD_URL=${DD_PROCESS_CONFIG_PROCESS_DD_URL}
     env_file:
-    - env.compose
+    - .env.compose.webhook
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock:ro
      - /proc/:/host/proc/:ro
