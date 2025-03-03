@@ -13,9 +13,14 @@ docker run --rm --name datadog-agent \
   -e DD_LOGS_CONFIG_LOGS_DD_URL="${DD_LOGS_CONFIG_LOGS_DD_URL}" \
   -e DD_LOGS_CONFIG_LOGS_NO_SSL="${DD_LOGS_CONFIG_LOGS_NO_SSL:-false}" \
   -e DATADOG_AGENT_HOST="datadog-agent" \
-  -e DATADOG_AGENT_PORT=8125 \
+  -e DD_DOGSTATSD_PORT=8125 \
+  -e DD_APM_RECEIVER_PORT=8126 \
+  -e DD_APM_ENABLED="${DD_APM_ENABLED:-false}" \
+  -e DD_APM_DD_URL="${DD_APM_DD_URL}" \
+  -e DD_APM_NON_LOCAL_TRAFFIC="${DD_APM_NON_LOCAL_TRAFFIC:-true}" \
   -e DD_CHECKS_TAG_CARDINALITY="${DD_CHECKS_TAG_CARDINALITY:-low}" \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
   -v ~/mezmo_docker/datadog-agent/run:/opt/datadog-agent/run:rw \
-  gcr.io/datadoghq/agent:7.61.0
+  -p 8125:8125 -p 8126:8126 \
+  gcr.io/datadoghq/agent
