@@ -12,6 +12,7 @@ docker run --rm --name datadog-agent \
   -e DD_URL="${DD_URL}" \
   -e DD_LOGS_CONFIG_LOGS_DD_URL="${DD_LOGS_CONFIG_LOGS_DD_URL}" \
   -e DD_LOGS_CONFIG_LOGS_NO_SSL="${DD_LOGS_CONFIG_LOGS_NO_SSL:-false}" \
+  -e DD_LOGS_CONFIG_FORCE_USE_HTTP="${DD_LOGS_CONFIG_FORCE_USE_HTTP:-false}" \
   -e DATADOG_AGENT_HOST="datadog-agent" \
   -e DD_DOGSTATSD_PORT=8125 \
   -e DD_APM_RECEIVER_PORT=8126 \
